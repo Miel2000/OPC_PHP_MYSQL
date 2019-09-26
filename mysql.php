@@ -54,7 +54,7 @@
         <div class="midle">
          <?php 
 
-                echo 'Cette erreur est normale, il ';
+               
 //  url localhost training - includes/mysql.php?console=PC&prix=15 donne half life 15€ (pas chére)
             $req =  $bdd->prepare('SELECT console, nom, prix FROM jeux_video WHERE console = :console');
             $req->execute(array(
