@@ -1,8 +1,8 @@
 
 <?php session_start();?>
-<?php include('php/entete.php');?>
-<?php include('php/menu.php');?>
-<?php include('php/pdo_connection.php');?>
+<?php include('entete.php');?>
+<?php include('menu.php');?>
+<?php include('pdo_connection.php');?>
 
 <div id="corps">
 

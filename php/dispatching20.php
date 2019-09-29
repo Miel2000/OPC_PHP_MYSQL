@@ -7,7 +7,7 @@
  <!-- Radio button laissant le choix a nouveaux entre 10 ou 20 -->
 
 <form action="dispatching_post.php" method="POST">
-            <input type="radio" id="par10" name="pageDistrib" value="par10">
+            <input type="radio" id="par10" name="pageDistrib" value="par10" checked>
             <label for="par10">10Com</label>
             <input type="radio" id="par20" name="pageDistrib" value="par20">
             <label for="par20">20Com</label>                       
@@ -25,7 +25,7 @@
     $index = 1;
         while($donnees = $display10com->fetch()) 
         {
-            echo '<p class="chatMsg" style="color:red;"> Commentaire n°'. $index++ .'<br>  <span style="color:green;"> ' .  htmlspecialchars($donnees['username']) .'</span>:'.  '  <span style="color:blue;" > ' .  htmlspecialchars($donnees['msg']) . ' </span></p><br>';
+            echo '<p class="chatMsg" style="color:red;"> Commentaire n°'. $index++ .'<br><span style="color:green;"><a href="infoAuteur.php?auteur=' . $donnees['username'] . '">' . htmlspecialchars($donnees["username"]) . ' </a> </span>:'.  '  <span style="color:blue;" > ' .  htmlspecialchars($donnees['msg']) . ' </span> <p class="addTime"> '. $donnees['date_ajout'] . '</p></p><br>';
         }
     $display10com->closeCursor();
 ?>

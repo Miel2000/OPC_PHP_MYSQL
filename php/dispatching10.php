@@ -9,14 +9,14 @@
 <form action="dispatching_post.php" method="POST">
     <input type="radio" id="par10" name="pageDistrib" value="par10">
     <label for="par10">10Com</label>
-    <input type="radio" id="par20" name="pageDistrib" value="par20">
+    <input type="radio" id="par20" name="pageDistrib" value="par20" checked>
     <label for="par20">20Com</label>                       
     <input type="submit">
 </form>
 
  <!-- Affiche 10 commentaires -->
 
-<div id="corps">
+<div id="chat_container">
 <?php      
     echo '<br>';
     echo '<h1>Les 10 derniers commentaires</h1>';
@@ -25,8 +25,7 @@
     $index = 1;
         while($donnees = $display10com->fetch()) 
         {
-            echo '<p class="chatMsg" style="color:red;"> Commentaire n°'. $index++ .'<br>  <span style="color:green;"> ' .  htmlspecialchars($donnees['username']) .'</span>:'.  '  <span style="color:blue;" > ' .  htmlspecialchars($donnees['msg']) . ' </span></p><br>';
-        }
+            echo '<p class="chatMsg" style="color:red;"> Commentaire n°'. $index++ .'<br><span style="color:green;"><a href="infoAuteur.php?auteur=' . $donnees['username'] . '">' . htmlspecialchars($donnees["username"]) . ' </a> </span>:'.  '  <span style="color:blue;" > ' .  htmlspecialchars($donnees['msg']) . ' </span> <p class="addTime"> '. $donnees['date_ajout'] . '</p></p><br>';        }
     $display10com->closeCursor();
 ?>  
 

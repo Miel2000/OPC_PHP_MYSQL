@@ -7,6 +7,12 @@
             <a class="nav-link"  href="compteur.php">Compteur</a>
             <a class="nav-link" href="nasa.php">TP1 EXERCICE NASA</a>
             <a class="nav-link" href="minichat.php">Mini-Chat</a>
+            <?php if(isset($_SESSION["visiteur"])) { ?>
+                 <a class="nav-link" href="#">Deconnexion</a>
+            <?php } else { ?>
+                <a class="nav-link" href="login.php">Sign in</a>
+            <?php }?>
     </nav>
 </div>
+<br>
 
