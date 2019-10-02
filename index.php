@@ -1,5 +1,7 @@
 
-<?php session_start();?>
+<?php session_start();
+?>
+
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -18,7 +20,11 @@
             <a class="nav-link"  href="php/compteur.php">Compteur</a>
             <a class="nav-link" href="php/nasa.php">TP1 EXERCICE NASA</a>
             <a class="nav-link" href="php/minichat.php">Mini-Chat</a>
-            <a class="nav-link" href="php/login.php">Sign in</a>
+            <?php if(isset($_SESSION["visiteur"])) { ?>
+                 <a class="nav-link" href="php/deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a class="nav-link" href="php/register.php">Sign in</a>
+            <?php }?>
     </nav>
 </div>
 <?php if(isset($_SESSION["visiteur"])) { ?>

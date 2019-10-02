@@ -5,10 +5,10 @@
 
 
 <div class="login_container">
-<h1>Login</h1>
+<h1>Enregistrement</h1>
 <p>Entrez votre login et votre mot de passe</p>
 
-<form method="post" action="login_post.php">
+<form method="post" action="register_post.php">
     <p>
         Login : <input type="text" name="login"><br />
         Mot de passe : <input type="password" name="pass"><br /><br />

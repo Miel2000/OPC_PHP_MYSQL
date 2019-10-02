@@ -8,17 +8,20 @@
 
 <?php
 try {
+   
     if(isset($_GET['nom']) AND $_GET['possesseur'] AND $_GET['console'] AND $_GET['prix'] AND $_GET['nbre_joueurs_max'] AND $_GET['commentaires']) {
-        $requete = $bdd->prepare('INSERT INTO `jeux_video` (nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES (:nom, :possesseur ,:console, :prix, :nbre_joueurs_max, :commentaires)');
+    $index= 1;
+        $requete = $bdd->prepare('INSERT INTO `jeux_video` (nom, possesseur, console, prix, nbre_joueurs_max, commentaires,ID_proprietaire) VALUES (:nom, :possesseur ,:console, :prix, :nbre_joueurs_max, :commentaires, :id_proprio)');
         $requete->execute(array(
                     'nom' => $_GET['nom'],
                     'possesseur'  => $_GET['possesseur'],
                     'console' =>  $_GET['console'], 
                     'prix' => $_GET['prix'], 
                     'nbre_joueurs_max' => $_GET['nbre_joueurs_max'],
-                    'commentaires' => $_GET['commentaires'])
-                    );
-
+                    'commentaires' => $_GET['commentaires'],
+                    'id_proprio' => $index++
+                    ));
+                 
                     echo '<br>';
                     echo '<pre>';
         
@@ -37,4 +40,4 @@ catch (Exception $e)
 ?>
 <br>
 </div>
-<?php include('pieddepage.php');?>
+<?php include('../php/pieddepage.php');?>

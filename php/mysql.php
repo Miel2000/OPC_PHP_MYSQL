@@ -59,7 +59,27 @@
     $nom_console20->closeCursor();
     ?>
 
-    <h1>NOS JEUX : </h1>
+   
+            <!--  Affiche la base de donnée en liant deux tables de la bdd -->
+<!--
+            <?php 
+          
+
+            $link = $bdd->query('SELECT jeux_video.nom AS nom_jeu, proprietaires.prenom AS prenom_proprietaire
+            FROM proprietaires, jeux_video
+            WHERE jeux_video.ID_proprietaire = proprietaires.id');
+          
+  
+            while($res = $link->fetch()){
+                echo $res['nom_jeu'] . ' = Nom du jeu  <br> ' . $res['prenom_proprietaire'] . ' = Proprietaire du jeu  <br> -  ici je dois incrémenter lors de l\'ajout d\'un jeu le champ ID_proprietaires pour qu\'il puisse linker les tables';
+
+            }
+  
+            $link->closeCursor();
+            ?>
+-->
+
+ <h1>NOS JEUX : </h1>
     <h5> Triez par consoles:</h5>
     <form action="mysql.php?console=" method="GET">
         <input type="radio" name="console" value="PC" id="PC" checked="checked" /> <label for="PC">PC</label>
@@ -68,6 +88,9 @@
         <input type="radio" name="console" value="Gamecube" id="Gamecube" /> <label for="Gamecube">Gamecube</label>
         <input type="submit">
     </form>
+
+
+
     <div class="midle">
             <!--  Affiche la base de donnée selon la valeur du parametre get -->
     <?php 
@@ -120,7 +143,9 @@
 
 <?php } else { ?>
 <div id="corps">
+
     <!--  Formulaire pour ajouter un jeux à la base de donnée -->
+
     <h1>Ajoutez un jeu à la base de donnée</h1>
     <form id="addingForm" action="addingToBdd.php" method="get"> 
         <input type="text" name="nom" placeholder="Nom du jeux vidéo"><br>
@@ -145,7 +170,9 @@
     ?>
 
     <h1>Jeux vidéo les moins cher</h1>
+
             <!--  Affiche 10 ligne dans un tableau des infos de la bdd jeux_video  et chaques noms des jeux vidéo écrit en majuscule -->
+
     <table class="table table-striped col-5">
     <?php 
     $allStuff_Jeuxvideo =  $bdd->query('SELECT UPPER(nom) as nom, console, prix, ID FROM jeux_video ORDER BY prix LIMIT 0, 10');
@@ -160,7 +187,9 @@
     </table>
 
     <h1>JEUX A MOINS DE  20€ : </h1>
+
         <!--  Affiche des jeux à moins de 20€ -->
+
     <?php 
     $nom_console20 =  $bdd->query('SELECT console, nom, prix FROM jeux_video WHERE prix<20 ORDER BY prix');
         while($donnees =   $nom_console20->fetch()) 
@@ -180,9 +209,13 @@
         <input type="submit">
     </form>
     <div class="midle">
+
             <!--  Affiche la base de donnée selon la valeur du parametre get -->
+
     <?php 
+
     //   local training - /mysql.php?console=PC&prix=15 est possible aussi, ça donne half life 15€ (pas chére)
+
     $req =  $bdd->prepare('SELECT * FROM jeux_video WHERE console = :console');
     $req->execute(array(
         'console' => $_GET['console']

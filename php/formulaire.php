@@ -19,9 +19,9 @@
             <a class="nav-link" href="nasa.php">TP1 EXERCICE NASA</a>
             <a class="nav-link" href="minichat.php">Mini-Chat</a>
             <?php if(isset($_SESSION["visiteur"])) { ?>
-                 <a class="nav-link" href="#">Deconnexion</a>
+                 <a class="nav-link" href="deconnexion.php">Deconnexion</a>
             <?php } else { ?>
-                <a class="nav-link" href="login.php">Sign in</a>
+                <a class="nav-link" href="register.php">Sign in</a>
             <?php }?>
     </nav>
 </div>
@@ -29,7 +29,7 @@
 
 <?php if(isset($_SESSION["visiteur"])) { ?>
     <nav class="element_menu_nav nav">
-            <a class="nav-link" href="secretMenu.php">Secret Menu</a>     
+            <a class="nav-link" href="deconnexion.php">Secret Menu</a>     
     </nav>
             <!-- 1em formulaire de prise d'informations  -->
     
